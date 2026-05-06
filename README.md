@@ -1,6 +1,6 @@
 # ServiGo — Doorstep Car Servicing
 
-A product prototype built as an assessment submission for MVPRockets.
+A full-stack product prototype demonstrating end-to-end product thinking — from market sizing and unit economics to a working, deployable application.
 
 **Live:** https://servigo-mauve.vercel.app
 
@@ -50,6 +50,20 @@ The full product brief — market sizing, unit economics, AI roadmap, 18-month s
 **Data moat:** KM reading captured at onboarding powers proactive service reminders (retention) and builds a vehicle service history dataset that becomes defensible at scale.
 
 Full rationale for all 8 decisions: https://servigo-mauve.vercel.app/decisions
+
+---
+
+## Product Brief
+
+The `/about` page documents the complete strategy behind ServiGo:
+
+- TAM/SAM/SOM sizing (bottom-up Bangalore build + top-down India market)
+- Unit economics per booking, per partner, per month
+- All pricing and demand assumptions made explicit
+- 5 user personas with Jobs-to-be-Done and estimated LTV
+- Competitive landscape and why GoMechanic failed
+- 5 AI features prioritised by phase and business impact
+- 18-month roadmap with bets, metrics, and risk mitigations per phase
 
 ---
 
