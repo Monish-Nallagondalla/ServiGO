@@ -3,8 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import {
   ArrowRight, ChevronDown, ChevronUp,
-  Shield, Brain, BarChart2,
-  CheckCircle, AlertTriangle, Lightbulb, Layers, DollarSign
+  Shield, Brain, AlertTriangle, Lightbulb, Layers, DollarSign
 } from 'lucide-react';
 
 // ─── section toggle helper ────────────────────────────────────────────────────
@@ -209,48 +208,57 @@ export default function AboutPage() {
 
       {/* ── 03 UNIT ECONOMICS ── */}
       <Section title="03 — Unit Economics" subtitle="Per booking, per partner, per month — fully modelled">
+        <div style={{ marginBottom: '0.75rem', padding: '0.875rem 1rem', background: 'rgba(200,230,80,0.05)', border: '1px solid rgba(200,230,80,0.2)', borderRadius: '0.75rem', fontSize: '0.78rem', color: 'var(--text-muted)', lineHeight: 1.65 }}>
+          <strong style={{ color: 'var(--text-primary)' }}>Revenue model:</strong> Customer pays parts + service charge + platform fee + GST in one invoice. Service charge covers partner fixed salary (₹30,000/month). Parts markup is the primary margin lever. Platform fee is a transparency anchor.
+        </div>
+
         <div style={{ marginBottom: '1.5rem' }}>
           <div style={{ fontWeight: 700, fontSize: '0.875rem', marginBottom: '0.875rem' }}>Per booking (Standard tier — most common)</div>
           {[
             { label: 'Avg parts cost (OEM, ex-markup)', value: '₹950' },
-            { label: 'ServiGo parts markup (32%)', value: '₹304', highlight: true },
-            { label: 'Labour (flat, partner payout)', value: '₹300' },
-            { label: 'Platform fee (customer-facing)', value: '₹100' },
-            { label: 'GST collected (18% on pre-GST total)', value: '₹243' },
-            { label: 'Total customer invoice', value: '₹1,897' },
-            { label: 'Rider payout (labour + delivery allowance ₹80)', value: '₹380' },
+            { label: 'ServiGo parts markup (32%)', value: '+₹304', highlight: true },
+            { label: 'Service charge (collected by ServiGo, covers payroll)', value: '₹350' },
+            { label: 'Platform fee (transparency anchor)', value: '₹100' },
+            { label: 'Pre-GST total', value: '₹1,704' },
+            { label: 'GST (18%)', value: '₹307' },
+            { label: 'Total customer invoice', value: '₹2,011' },
             { label: 'Parts COGS', value: '₹950' },
-            { label: 'Contribution margin per booking', value: '₹367 (19.4%)', highlight: true },
+            { label: 'Partner payroll allocation per job (₹30,000 / 96 jobs)', value: '₹313' },
+            { label: 'Net margin per booking (markup + fee minus payroll alloc)', value: '₹441 (21.9%)', highlight: true },
           ].map(r => <Row key={r.label} label={r.label} value={r.value} highlight={(r as any).highlight} />)}
         </div>
 
         <div style={{ marginBottom: '1.5rem' }}>
           <div style={{ fontWeight: 700, fontSize: '0.875rem', marginBottom: '0.875rem' }}>Per partner per month</div>
           {[
-            { label: 'Jobs/day target', value: '4–5' },
+            { label: 'Jobs/day target', value: '4' },
             { label: 'Working days/month', value: '24' },
-            { label: 'Monthly jobs per partner', value: '96–120' },
-            { label: 'Monthly GMV per partner', value: '₹1.82L–₹2.28L' },
-            { label: 'Monthly contribution margin per partner', value: '₹35,300–₹44,200', highlight: true },
-            { label: 'Partner monthly fixed cost (payout + kit + bike)', value: '₹18,000' },
-            { label: 'Net margin per partner per month', value: '₹17,300–₹26,200', highlight: true },
+            { label: 'Monthly jobs per partner', value: '96' },
+            { label: 'Service charges collected (96 × ₹350)', value: '₹33,600' },
+            { label: 'Partner fixed salary', value: '₹30,000' },
+            { label: 'Service charge surplus after payroll', value: '₹3,600' },
+            { label: 'Parts GMV (96 × ₹1,250 avg)', value: '₹1,20,000' },
+            { label: 'Parts markup revenue (32%)', value: '₹38,400', highlight: true },
+            { label: 'Platform fees (96 × ₹100)', value: '₹9,600' },
+            { label: 'Ops cost (kit, travel allowance, admin)', value: '₹1,200' },
+            { label: 'Net margin per partner per month', value: '₹50,400', highlight: true },
           ].map(r => <Row key={r.label} label={r.label} value={r.value} highlight={(r as any).highlight} />)}
         </div>
 
         <Callout icon={<DollarSign size={16} />} title="Path to unit economics profitability" color="accent"
-          body="A single partner hitting 4 jobs/day generates ₹17,300+ net margin/month for the platform. At 8 partners (current Bangalore mock), monthly platform margin = ₹1.38L–₹2.1L. Break-even at city level requires ~15 active partners at 80% utilisation. Bangalore break-even = Month 8 at current growth assumptions." />
+          body="Service charges make partners cost-neutral — the ₹33,600 collected comfortably covers the ₹30,000 salary. Parts markup and platform fees are then pure platform margin. At 8 partners, monthly platform margin = ₹4.03L. City-level break-even (including ops overhead) at ~6 active partners. Bangalore break-even = Month 4–5." />
 
         <div>
           <div style={{ fontWeight: 700, fontSize: '0.875rem', marginBottom: '0.875rem' }}>Luxury tier premium economics</div>
           {[
             { label: 'Avg parts cost (BMW 5 Series oil change)', value: '₹4,000' },
-            { label: 'Parts markup (32% base + 30% sourcing surcharge)', value: '₹2,496', highlight: true },
-            { label: 'Labour (flat)', value: '₹300' },
+            { label: 'Parts markup (32% base + 30% sourcing surcharge)', value: '+₹2,496', highlight: true },
+            { label: 'Service charge (complexity premium)', value: '₹500' },
             { label: 'Platform fee', value: '₹100' },
-            { label: 'Total pre-GST', value: '₹6,896' },
-            { label: 'GST (18%)', value: '₹1,241' },
-            { label: 'Customer invoice', value: '₹8,137' },
-            { label: 'Net margin per booking', value: '₹2,316 (28.5%)', highlight: true },
+            { label: 'Pre-GST total', value: '₹7,096' },
+            { label: 'GST (18%)', value: '₹1,277' },
+            { label: 'Customer invoice', value: '₹8,373' },
+            { label: 'Net margin per booking (after payroll alloc)', value: '₹2,783 (33.2%)', highlight: true },
           ].map(r => <Row key={r.label} label={r.label} value={r.value} highlight={(r as any).highlight} />)}
         </div>
       </Section>
@@ -289,8 +297,9 @@ export default function AboutPage() {
             { label: 'Parts markup — luxury tier', value: '32% base + 30% sourcing surcharge' },
             { label: 'Parts markup — ultra luxury', value: '32% base + 45% sourcing surcharge' },
             { label: 'Platform fee', value: '₹100 flat (psychological anchor, not revenue centre)' },
-            { label: 'GST applicability', value: '18% on parts + labour + platform fee (pre-surcharge base)' },
-            { label: 'Labour rate', value: 'Flat ₹150–500 per service (not tier-adjusted — labour is distribution cost)' },
+            { label: 'GST applicability', value: '18% on parts + service charge + platform fee (pre-surcharge base)' },
+            { label: 'Service charge', value: '₹300–500/job (collected by ServiGo, applied to partner fixed salary of ₹30,000/month)' },
+            { label: 'Partner compensation model', value: 'Fixed salary ₹30,000/month — not per-job. Service charges cover this cost regardless of job mix.' },
           ].map(r => <Row key={r.label} label={r.label} value={r.value} />)}
         </div>
       </Section>

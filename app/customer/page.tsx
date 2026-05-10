@@ -231,7 +231,7 @@ function Step2({ state, setState }: { state: BookingState; setState: (s: Booking
                 <span style={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>⏱ {svc.duration}</span>
               </div>
               <div style={{ fontSize: '0.72rem', color: 'var(--text-muted)', marginTop: '0.35rem' }}>
-                Parts ₹{partCost.toLocaleString()} · Labour ₹{svc.laborCost} (flat)
+                Parts ₹{partCost.toLocaleString()} · Service charge ₹{svc.laborCost}
               </div>
               {selected && (
                 <div style={{
